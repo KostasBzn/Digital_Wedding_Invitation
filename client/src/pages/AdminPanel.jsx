@@ -1,3 +1,5 @@
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 import { useEffect, useMemo, useState } from "react";
 import { Download, Loader2, Copy, Check } from "lucide-react";
 import { useAdminContext } from "../context/AdminContext";
@@ -17,10 +19,12 @@ function AdminPanel() {
     fetchAllGuests();
   }, []);
 
+  // dynamic invitation link
   const invitationLink = useMemo(() => {
     return excludeExtra ? `${INVITATION_BASE_URL}?ext=1` : INVITATION_BASE_URL;
   }, [excludeExtra]);
 
+  // copy invitation link
   const handleCopyLink = async () => {
     try {
       await navigator.clipboard.writeText(invitationLink);
@@ -31,6 +35,7 @@ function AdminPanel() {
     }
   };
 
+  // sort alphabetically
   const sortedGuests = useMemo(
     () => [...guests].sort((a, b) => a.surname.localeCompare(b.surname)),
     [guests],
@@ -50,7 +55,30 @@ function AdminPanel() {
     };
   }, [guests]);
 
-  const handleExport = () => console.log("exporting list");
+  // export into pdf
+  const handleExport = () => {
+    const doc = new jsPDF(); // default A4 size
+
+    doc.setFontSize(14);
+    // (text, x, y) explanation -> 14mm from left, 15mm from top
+    doc.text("Guest List", 14, 15);
+
+    autoTable(doc, {
+      startY: 20,
+      head: [["#", "Name", "Email", "Phone", "Attending", "Persons"]],
+      body: sortedGuests.map((g, index) => [
+        index + 1,
+        `${g.surname} ${g.name}`,
+        g.email,
+        g.phone,
+        g.isAttending ? "Yes" : "No",
+        g.isAttending ? g.personsCount : "-",
+      ]),
+    });
+
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-"); // date + time to avoid file overwrite
+    doc.save(`guest-list_${timestamp}.pdf`);
+  };
 
   return (
     <section className="min-h-screen bg-admin-bg px-4 py-6 sm:px-8">
