@@ -10,7 +10,7 @@ const GuestProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // public — guest submits their own RSVP once
+  // public - the guest sumbitts his data
   const addGuest = async (guestData) => {
     setLoading(true);
     setError(null);
@@ -25,7 +25,7 @@ const GuestProvider = ({ children }) => {
     }
   };
 
-  // admin — fetch single guest by id
+  // admin - open guest details
   const findGuest = async (guestId) => {
     setLoading(true);
     setError(null);
@@ -42,7 +42,7 @@ const GuestProvider = ({ children }) => {
     }
   };
 
-  // admin — fetch all guests
+  // admin - fetch all guests
   const fetchAllGuests = async () => {
     setLoading(true);
     setError(null);
@@ -58,7 +58,7 @@ const GuestProvider = ({ children }) => {
     }
   };
 
-  // admin — delete guest by id
+  // admin - delete guest by id
   const deleteGuest = async (guestId) => {
     setLoading(true);
     setError(null);
@@ -74,7 +74,7 @@ const GuestProvider = ({ children }) => {
     }
   };
 
-  // admin — update guest by id
+  // admin - update guest by id
   const updateGuest = async (guestId, updates) => {
     setLoading(true);
     setError(null);
