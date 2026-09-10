@@ -13,7 +13,7 @@
 
 ---
 
-## Photo Album (Optional)
+## Photo Album (not sure yet)
 
 - Simple upload UI
 - Uploads go to Cloudinary, metadata saved to Mongo
@@ -28,32 +28,6 @@
 ---
 
 # Backend Plan
-
-## Folder Structure
-
-```
-/backend
-  /config
-    db.js
-    cloudinary.js // cloudinary config
-  /models
-    Guest.js
-    Photo.js
-  /controllers
-    rsvpController.js
-    photoController.js
-    adminController.js
-  /routes
-    rsvpRoutes.js
-    photoRoutes.js
-    adminRoutes.js
-  /middlewares
-    auth.js
-    errorHandler.js
-    upload.js  // for the photos
-  index.js
-  app.js
-```
 
 ## Photo Model
 
