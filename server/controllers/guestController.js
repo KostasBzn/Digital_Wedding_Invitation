@@ -6,6 +6,11 @@ export const addGuest = async (req, res, next) => {
     const guest = await Guest.create(req.body);
     res.status(201).json({ success: true, guest });
   } catch (error) {
+    if (error.code === 11000) {
+      return res
+        .status(409)
+        .json({ message: "This email is already registered" }); // to prevent from guest to register more than once
+    }
     next(error);
   }
 };
