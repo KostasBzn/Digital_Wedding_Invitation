@@ -1,31 +1,29 @@
 ## Readme file for the project
 
-# Wedding Project Plan
+# My Plan
 
 ## Stack
 
 - Frontend: React
 - Backend: Node.js + Express
-- Database: MongoDB (Atlas free tier)
+- Database: MongoDB
 - Media storage: Cloudinary
 - Email sending: Resend
-- Hosting: Vercel (frontend + backend)
+- Hosting: Vercel
 
 ---
 
-## Part 1: Digital Invitation
+## Photo Album (Optional)
 
-## Part 2: Photo Album (Optional)
+- Simple upload UI
+- Uploads go to Cloudinary, metadata saved to Mongo
+- Gallery view to see uploaded photos
 
-- Simple upload UI (drag/drop or camera on mobile)
-- Uploads go to Cloudinary, metadata (url, guest name optional, timestamp) saved to Mongo
-- Gallery view to see uploaded photos (optional, groom can decide if public or admin-only)
+## Admin Panel
 
-## Part 3: Admin Panel (groom only)
-
-- Simple login (password protected, doesn't need to be fancy)
-- Guest list table with filter/search
-- Photo moderation view (optional — delete inappropriate uploads)
+- Simple login (password protected)
+- Guest list table with filter and search
+- Photo view
 
 ---
 
@@ -36,9 +34,8 @@
 ```
 /backend
   /config
-    db.js            → mongo connection
-    cloudinary.js     → cloudinary config
-    email.js          → resend config
+    db.js
+    cloudinary.js // cloudinary config
   /models
     Guest.js
     Photo.js
@@ -51,30 +48,20 @@
     photoRoutes.js
     adminRoutes.js
   /middlewares
-    auth.js           → admin auth check
-    errorHandler.js    → centralized error handling
-    upload.js          → multer config for handling file uploads
-  server.js            → app.listen
-  app.js               → express app setup, middleware mounting
+    auth.js
+    errorHandler.js
+    upload.js  // for the photos
+  index.js
+  app.js
 ```
-
-## API Endpoints
-
-### Photos
-
-- `POST /api/photos/upload` — upload photo (via multer + cloudinary)
-- `GET /api/photos` — fetch all photos for gallery
-- `DELETE /api/photos/:id` — remove photo (admin)
 
 ## Photo Model
 
-**Photo**
+in case I do it
 
 ```js
 {
   url: String,
-  cloudinaryId: String,
-  uploadedBy: String,  // optional
-  createdAt: Date
+  cloudinaryId: String, // not sure about that
 }
 ```
