@@ -9,8 +9,6 @@ function GuestDetailModal({ guest, onClose, onUpdated }) {
   const [form, setForm] = useState({
     name: guest.name,
     surname: guest.surname,
-    email: guest.email,
-    phone: guest.phone,
     isAttending: guest.isAttending,
     personsCount: guest.personsCount,
   });
@@ -48,8 +46,6 @@ function GuestDetailModal({ guest, onClose, onUpdated }) {
 
         {!editMode ? (
           <div className="space-y-3">
-            <Detail label="Email" value={guest.email} />
-            <Detail label="Phone" value={guest.phone} />
             <Detail
               label="Status"
               value={
@@ -129,16 +125,6 @@ function GuestDetailModal({ guest, onClose, onUpdated }) {
               label="Surname"
               value={form.surname}
               onChange={(v) => handleChange("surname", v)}
-            />
-            <Field
-              label="Email"
-              value={form.email}
-              onChange={(v) => handleChange("email", v)}
-            />
-            <Field
-              label="Phone"
-              value={form.phone}
-              onChange={(v) => handleChange("phone", v)}
             />
 
             <div>

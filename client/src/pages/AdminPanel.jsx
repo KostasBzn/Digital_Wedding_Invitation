@@ -65,12 +65,10 @@ function AdminPanel() {
 
     autoTable(doc, {
       startY: 20,
-      head: [["#", "Name", "Email", "Phone", "Attending", "Persons"]],
+      head: [["#", "Name", "Attending", "Persons"]],
       body: sortedGuests.map((g, index) => [
         index + 1,
         `${g.surname} ${g.name}`,
-        g.email,
-        g.phone,
         g.isAttending ? "Yes" : "No",
         g.isAttending ? g.personsCount : "-",
       ]),
