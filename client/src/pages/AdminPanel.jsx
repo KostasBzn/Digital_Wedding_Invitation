@@ -1,17 +1,35 @@
 import { useEffect, useMemo, useState } from "react";
-import { Download, Loader2 } from "lucide-react";
+import { Download, Loader2, Copy, Check } from "lucide-react";
 import { useAdminContext } from "../context/AdminContext";
 import { useGuestContext } from "../context/GuestContext";
 import GuestDetailModal from "../components/GuestDetailModal";
+
+const INVITATION_BASE_URL = import.meta.env.VITE_INVITATION_URL;
 
 function AdminPanel() {
   const { user } = useAdminContext();
   const { guests, loading, fetchAllGuests } = useGuestContext();
   const [selectedGuest, setSelectedGuest] = useState(null);
+  const [excludeExtra, setExcludeExtra] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     fetchAllGuests();
   }, []);
+
+  const invitationLink = useMemo(() => {
+    return excludeExtra ? `${INVITATION_BASE_URL}?ext=1` : INVITATION_BASE_URL;
+  }, [excludeExtra]);
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(invitationLink);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.log("Error copying link:", err.message);
+    }
+  };
 
   const sortedGuests = useMemo(
     () => [...guests].sort((a, b) => a.surname.localeCompare(b.surname)),
@@ -47,6 +65,40 @@ function AdminPanel() {
           >
             <Download size={16} /> Export
           </button>
+        </div>
+
+        <h1 className="text-admin-text text-2xl font-semibold mb-4">
+          Invitation Link
+        </h1>
+
+        <div className="bg-admin-surface border border-admin-border rounded-2xl p-4 mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <label className="flex items-center gap-2 text-admin-text-muted text-xs cursor-pointer">
+              <input
+                type="checkbox"
+                checked={excludeExtra}
+                onChange={(e) => setExcludeExtra(e.target.checked)}
+                className="accent-admin-accent"
+              />
+              Exclude restaurant details
+            </label>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              readOnly
+              value={invitationLink}
+              className="flex-1 bg-admin-bg border border-admin-border text-admin-text text-sm rounded-lg px-3 py-2 truncate"
+            />
+            <button
+              onClick={handleCopyLink}
+              className="flex items-center gap-2 bg-admin-bg border border-admin-border text-admin-text text-sm rounded-lg px-3 py-2 hover:border-admin-accent transition-colors shrink-0"
+            >
+              {copied ? <Check size={16} /> : <Copy size={16} />}
+              {copied ? "Copied" : "Copy"}
+            </button>
+          </div>
         </div>
 
         <h1 className="text-admin-text text-2xl font-semibold mb-4">
