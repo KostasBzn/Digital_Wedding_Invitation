@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 
+// middleware for authentication, Decodes the token from the request headers
 const adminAuth = (req, res, next) => {
   const authHeader = req.headers.authorization;
 

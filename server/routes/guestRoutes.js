@@ -1,4 +1,5 @@
 import express from "express";
+import adminAuth from "../middlewares/adminAuth.js";
 import {
   addGuest,
   getGuestById,
@@ -9,10 +10,13 @@ import {
 
 const guestRoutes = express.Router();
 
+// the public ones, the guest can submit
 guestRoutes.post("/add", addGuest);
 guestRoutes.get("/find/:guestId", getGuestById);
-guestRoutes.get("/all", getAllGuests);
-guestRoutes.delete("/delete/:guestId", deleteGuestById);
-guestRoutes.put("/edit/:guestId", updateGuest);
+
+// the ones that only the admin can call from the control panel
+guestRoutes.get("/all", adminAuth, getAllGuests);
+guestRoutes.delete("/delete/:guestId", adminAuth, deleteGuestById);
+guestRoutes.put("/edit/:guestId", adminAuth, updateGuest);
 
 export default guestRoutes;
