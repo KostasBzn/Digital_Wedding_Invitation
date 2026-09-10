@@ -19,7 +19,7 @@
   --color-admin-danger: #ef4444; /* delete actions and errors */
   --color-admin-success: #25d366; /* success states */
 
-  --font-display: "YOUR_FONT_NAME", serif;
+  --font-display: "FONT_NAME", serif;
 }
 
 body {
