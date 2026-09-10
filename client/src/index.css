@@ -2,13 +2,24 @@
 /* @import url("https://fonts.googleapis.com/css2?family=FONT_NAME:wght@400;600;700&display=swap"); */
 
 @theme {
+  /* wedding/invitation*/
   --color-blue: #34b7f1;
   --color-teal-green: #128c7e;
   --color-light-green: #25d366;
   --color-teal-green-dark: #075e54;
   --color-pearl-bush: #ece5dd;
 
-  /* --font-display: "FONT_NAME", serif; */
+  /* admin panel - dark theme */
+  --color-admin-bg: #14161a; /* main background */
+  --color-admin-surface: #1e2126; /* cards, panels, table rows */
+  --color-admin-border: #2c2f36; /* borders/dividers */
+  --color-admin-text: #f4f4f5; /* text*/
+  --color-admin-text-muted: #9ca3af; /* secondary text and labels */
+  --color-admin-accent: #34b7f1; /* buttons, links, active states */
+  --color-admin-danger: #ef4444; /* delete actions and errors */
+  --color-admin-success: #25d366; /* success states */
+
+  --font-display: "YOUR_FONT_NAME", serif;
 }
 
 body {
