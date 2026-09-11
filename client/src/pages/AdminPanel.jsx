@@ -6,7 +6,7 @@ import { useAdminContext } from "../context/AdminContext";
 import { useGuestContext } from "../context/GuestContext";
 import GuestDetailModal from "../components/GuestDetailModal";
 
-const INVITATION_BASE_URL = import.meta.env.VITE_INVITATION_URL;
+const INVITATION_BASE_URL = import.meta.env.INVITATION_URL;
 
 function AdminPanel() {
   const { user } = useAdminContext();
