@@ -210,7 +210,7 @@ function Invitation() {
       {/* Venues */}
       <section
         id="teleti"
-        className={`max-w-3xl mx-auto px-4 py-12 grid gap-8 text-center ${
+        className={`max-w-3xl mx-auto px-4 py-12 grid gap-8 text-center border-t border-gray-300 ${
           isLimited
             ? "grid-cols-1 justify-items-center"
             : "sm:grid-cols-2 grid-cols-1"
@@ -315,7 +315,7 @@ function Invitation() {
       {/* Contact */}
       <section
         id="epikoinonia"
-        className="max-w-2xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 gap-6 text-center"
+        className="max-w-2xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 gap-6 text-center border-t border-gray-300"
       >
         <div className="bg-white rounded-xl p-6 border border-gray-200">
           {/* <div className="w-24 h-24 mx-auto mb-3 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
