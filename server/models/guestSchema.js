@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const guestSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true, trim: true },
-    surname: { type: String, required: true, trim: true },
+    name: { type: String, required: true, trim: true, uppercase: true },
+    surname: { type: String, required: true, trim: true, uppercase: true },
     personsCount: { type: Number, required: true, min: 0, default: 0 },
     isAttending: { type: Boolean, default: false },
   },

@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Heart, Loader2, Check } from "lucide-react";
+import { Loader2, Check } from "lucide-react";
+import {
+  APIProvider,
+  Map,
+  Marker,
+  InfoWindow,
+} from "@vis.gl/react-google-maps";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { useGuestContext } from "../context/GuestContext";
-import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 
 function Invitation() {
   const [searchParams] = useSearchParams();
@@ -32,7 +38,7 @@ function Invitation() {
       name: form.name,
       surname: form.surname,
       isAttending: form.isAttending,
-      personsCount: form.isAttending ? form.personsCount : 0,
+      personsCount: form.isAttending ? Number(form.personsCount) || 1 : 0,
     };
     const result = await addGuest(payload);
     if (result) setSubmitted(true);
@@ -47,10 +53,10 @@ function Invitation() {
           [ maybe an animation ]
         </div>
         <h1 className="text-4xl sm:text-5xl text-teal-green-dark mb-2">
-          Μιχάλης &amp; Μαριάννα
+          Χρήστος &amp; Σαμσούλα
         </h1>
         <p className="text-sm tracking-widest text-gray-500">
-          ΣΑΒΒΑΤΟ 25 ΟΚΤΩΒΡΙΟΥ 2026 | 12:00
+          ΣΑΒΒΑΤΟ 5 ΔΕΚΕΜΒΡΙΟΥ 2026 | 12:00
         </p>
       </header>
 
@@ -76,30 +82,30 @@ function Invitation() {
       </nav>
 
       {/* Our Story */}
-      <section className="max-w-2xl mx-auto text-center px-4 py-12">
+      {/* <section className="max-w-2xl mx-auto text-center px-4 py-12">
         <h2 className="text-2xl text-teal-green-dark mb-4">Η ιστορία μας</h2>
         <p className="text-sm leading-relaxed text-gray-600">
           Εδώ θα μπει το κείμενο με την ιστορία του ζευγαριού. Λίγα λόγια για το
           πώς γνωριστήκαμε, τη διαδρομή μας μέχρι σήμερα, και τη χαρά που
           νιώθουμε που θα μοιραστούμε αυτή τη μέρα μαζί σας.
         </p>
-      </section>
+      </section> */}
 
       {/* Photo placeholder */}
-      <div className="max-w-3xl mx-auto px-4">
+      {/* <div className="max-w-3xl mx-auto px-4">
         <div className="w-full aspect-video bg-gray-200 flex items-center justify-center text-gray-400 text-sm rounded-lg">
           [ Fotografia zeugariou ]
         </div>
-      </div>
+      </div> */}
 
       {/* RSVP Form */}
       <section id="rsvp" className="max-w-md mx-auto px-4 py-16">
         <h2 className="text-2xl text-teal-green-dark text-center mb-2">
-          Ο χαμός μας
+          Ο γάμος μας
         </h2>
         <p className="text-sm text-gray-500 text-center mb-8">
-          Θα χαρούμε πολύ αν μας ενημερώσετε για την παρουσία σας έως τις
-          [ημερομηνία]
+          Θα χαρούμε πολύ αν μας ενημερώσετε για την παρουσία σας έως τις 15
+          Νοεμβρίου 2026
         </p>
 
         {submitted ? (
@@ -176,9 +182,7 @@ function Invitation() {
                   min="1"
                   required
                   value={form.personsCount}
-                  onChange={(e) =>
-                    handleChange("personsCount", Number(e.target.value))
-                  }
+                  onChange={(e) => handleChange("personsCount", e.target.value)}
                   className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
                 />
               </div>
@@ -206,13 +210,17 @@ function Invitation() {
       {/* Venues */}
       <section
         id="teleti"
-        className="max-w-3xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 gap-8 text-center"
+        className={`max-w-3xl mx-auto px-4 py-12 grid gap-8 text-center ${
+          isLimited
+            ? "grid-cols-1 justify-items-center"
+            : "sm:grid-cols-2 grid-cols-1"
+        }`}
       >
         <div>
           <h3 className="text-xl text-teal-green-dark mb-2">Τελετή</h3>
           <p className="text-sm font-medium">Ιερός Ναός Αγίου Παντελεήμονα</p>
           <p className="text-xs text-gray-500">
-            Αλεξανδρουπόλεως, Αργυρούπολη, 164 51 Θεσσαλονίκη
+            Αλεξανδρουπόλεως, Αργυρούπολη, 164 51 Αθηνα
           </p>
         </div>
         {!isLimited && (
@@ -220,7 +228,7 @@ function Invitation() {
             <h3 className="text-xl text-teal-green-dark mb-2">Δεξίωση</h3>
             <p className="text-sm font-medium">Venus Hall</p>
             <p className="text-xs text-gray-500">
-              Ανδρέου Παπανδρέου, Γλυφάδα 1, 165 38 Θεσσαλονίκη
+              Ανδρέου Παπανδρέου, Γλυφάδα 1, 165 38 Αθήνα
             </p>
           </div>
         )}
@@ -235,11 +243,13 @@ function Invitation() {
               defaultCenter={CHURCH_COORDS}
               defaultZoom={13}
               gestureHandling="cooperative"
-              disableDefaultUI={true}
+              zoomControl={true}
+              fullscreenControl={true}
+              streetViewControl={true}
+              mapTypeControl={false}
             >
               <Marker
                 position={CHURCH_COORDS}
-                label="❤️"
                 title="Τελετή"
                 onClick={() =>
                   setActivePin(activePin === "teleti" ? null : "teleti")
@@ -249,35 +259,41 @@ function Invitation() {
               {!isLimited && (
                 <Marker
                   position={RESTAURANT_COORDS}
-                  label="❤️"
                   title="Δεξίωση"
                   onClick={() =>
                     setActivePin(activePin === "dexiosi" ? null : "dexiosi")
                   }
                 />
               )}
+
+              {activePin && (
+                <InfoWindow
+                  position={
+                    activePin === "teleti" ? CHURCH_COORDS : RESTAURANT_COORDS
+                  }
+                  onCloseClick={() => setActivePin(null)}
+                >
+                  <div className="text-sm text-center p-1">
+                    <p className="font-medium text-teal-green-dark mb-1">
+                      {activePin === "teleti" ? "Τελετή" : "Δεξίωση"}
+                    </p>
+                    <a
+                      href={`https://www.google.com/maps?q=${
+                        activePin === "teleti"
+                          ? `${CHURCH_COORDS.lat},${CHURCH_COORDS.lng}`
+                          : `${RESTAURANT_COORDS.lat},${RESTAURANT_COORDS.lng}`
+                      }`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs text-blue underline"
+                    >
+                      Άνοιγμα στον χάρτη
+                    </a>
+                  </div>
+                </InfoWindow>
+              )}
             </Map>
           </APIProvider>
-
-          {activePin && (
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-white rounded-lg shadow px-4 py-2 text-sm text-center z-10">
-              <p className="font-medium text-teal-green-dark mb-1">
-                {activePin === "teleti" ? "Τελετή" : "Δεξίωση"}
-              </p>
-              <a
-                href={`https://www.google.com/maps?q=${
-                  activePin === "teleti"
-                    ? `${CHURCH_COORDS.lat},${CHURCH_COORDS.lng}`
-                    : `${RESTAURANT_COORDS.lat},${RESTAURANT_COORDS.lng}`
-                }`}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs text-blue underline"
-              >
-                Άνοιγμα στον χάρτη
-              </a>
-            </div>
-          )}
         </div>
       </div>
 
@@ -302,23 +318,61 @@ function Invitation() {
         className="max-w-2xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 gap-6 text-center"
       >
         <div className="bg-white rounded-xl p-6 border border-gray-200">
-          <div className="w-24 h-24 mx-auto mb-3 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
+          {/* <div className="w-24 h-24 mx-auto mb-3 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
             [ foto ]
-          </div>
-          <p className="text-teal-green-dark font-medium">Μιχάλης</p>
+          </div> */}
+          <p className="text-teal-green-dark font-medium">Χρήστος</p>
           <p className="text-xs text-gray-500 mt-1">τηλ. 697 1234567</p>
+          {/* facebook and instagram  */}
+          <div className="flex justify-center gap-3 mt-3">
+            <a
+              href="https://instagram.com/username"
+              target="_blank"
+              rel="noreferrer"
+              className="text-teal-green-dark hover:opacity-70"
+            >
+              <FaInstagram size={18} />
+            </a>
+            <a
+              href="https://facebook.com/username"
+              target="_blank"
+              rel="noreferrer"
+              className="text-teal-green-dark hover:opacity-70"
+            >
+              <FaFacebook size={18} />
+            </a>
+          </div>
         </div>
         <div className="bg-white rounded-xl p-6 border border-gray-200">
-          <div className="w-24 h-24 mx-auto mb-3 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
+          {/* <div className="w-24 h-24 mx-auto mb-3 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
             [ foto ]
-          </div>
-          <p className="text-teal-green-dark font-medium">Μαριάννα</p>
+          </div> */}
+          <p className="text-teal-green-dark font-medium">Σαμσούλα</p>
           <p className="text-xs text-gray-500 mt-1">τηλ. 698 7654321</p>
+          {/* facebook and instagram */}
+          <div className="flex justify-center gap-3 mt-3">
+            <a
+              href="https://instagram.com/username"
+              target="_blank"
+              rel="noreferrer"
+              className="text-teal-green-dark hover:opacity-70"
+            >
+              <FaInstagram size={18} />
+            </a>
+            <a
+              href="https://facebook.com/username"
+              target="_blank"
+              rel="noreferrer"
+              className="text-teal-green-dark hover:opacity-70"
+            >
+              <FaFacebook size={18} />
+            </a>
+          </div>
         </div>
       </section>
 
       <footer className="text-center text-xs text-gray-400 pb-10">
-        Με αγάπη, Μιχάλης &amp; Μαριάννα
+        Με αγάπη, Χρήστος &amp; Σαμσούλα
       </footer>
     </div>
   );
