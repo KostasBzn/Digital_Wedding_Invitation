@@ -245,7 +245,7 @@ function Invitation() {
               gestureHandling="cooperative"
               zoomControl={true}
               fullscreenControl={true}
-              streetViewControl={true}
+              streetViewControl={false}
               mapTypeControl={false}
             >
               <Marker
