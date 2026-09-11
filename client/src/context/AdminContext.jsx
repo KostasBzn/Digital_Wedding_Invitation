@@ -30,6 +30,7 @@ const AdminProvider = ({ children }) => {
   }, []);
 
   const login = async (username, password) => {
+    setLoading(true);
     setError(null);
     try {
       const response = await axios.post("/admin/login", { username, password });
@@ -40,6 +41,8 @@ const AdminProvider = ({ children }) => {
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
       return false;
+    } finally {
+      setLoading(false);
     }
   };
 
