@@ -5,6 +5,7 @@ import GuestProvider from "./context/GuestContext";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPanel from "./pages/AdminPanel";
 import Invitation from "./pages/Invitation";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <GuestProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/invite" element={<Invitation />} />
+              <Route path="/" element={<Invitation />} />
               <Route path="/admin" element={<AdminLogin />} />
+              <Route path="*" element={<NotFound />} />
               <Route
                 path="/admin/panel"
                 element={
