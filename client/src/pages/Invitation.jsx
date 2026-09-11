@@ -26,8 +26,16 @@ function Invitation() {
 
   const apiKey = import.meta.env.VITE_GOOGLE_API;
   // coordinates for the locations
-  const CHURCH_COORDS = { lat: 37.81695954802697, lng: 23.77899763534356 };
-  const RESTAURANT_COORDS = { lat: 37.9838, lng: 23.7275 };
+  const CHURCH_COORDS = { lat: 37.816697, lng: 23.778526 };
+  const RESTAURANT_COORDS = { lat: 37.853046, lng: 23.813512 };
+
+  // center the map between the two pings
+  const mapCenter = isLimited
+    ? CHURCH_COORDS
+    : {
+        lat: (CHURCH_COORDS.lat + RESTAURANT_COORDS.lat) / 2,
+        lng: (CHURCH_COORDS.lng + RESTAURANT_COORDS.lng) / 2,
+      };
 
   const handleChange = (field, value) =>
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -226,9 +234,9 @@ function Invitation() {
         {!isLimited && (
           <div id="dexiosi">
             <h3 className="text-xl text-teal-green-dark mb-2">Δεξίωση</h3>
-            <p className="text-sm font-medium">Venus Hall</p>
+            <p className="text-sm font-medium">Κτήμα Ιβέλια</p>
             <p className="text-xs text-gray-500">
-              Ανδρέου Παπανδρέου, Γλυφάδα 1, 165 38 Αθήνα
+              Λαμπτρών, Κορωπί 166 72, Ελλάδα
             </p>
           </div>
         )}
@@ -240,8 +248,8 @@ function Invitation() {
           <APIProvider apiKey={apiKey}>
             <Map
               style={{ width: "100%", height: "100%" }}
-              defaultCenter={CHURCH_COORDS}
-              defaultZoom={13}
+              defaultCenter={mapCenter}
+              defaultZoom={12}
               gestureHandling="cooperative"
               zoomControl={true}
               fullscreenControl={true}
@@ -322,7 +330,7 @@ function Invitation() {
             [ foto ]
           </div> */}
           <p className="text-teal-green-dark font-medium">Χρήστος</p>
-          <p className="text-xs text-gray-500 mt-1">τηλ. 697 1234567</p>
+          <p className="text-xs text-gray-500 mt-1">τηλ. 697 9533908</p>
           {/* facebook and instagram  */}
           <div className="flex justify-center gap-3 mt-3">
             <a
@@ -348,7 +356,7 @@ function Invitation() {
             [ foto ]
           </div> */}
           <p className="text-teal-green-dark font-medium">Σαμσούλα</p>
-          <p className="text-xs text-gray-500 mt-1">τηλ. 698 7654321</p>
+          <p className="text-xs text-gray-500 mt-1">τηλ. 697 9533908</p>
           {/* facebook and instagram */}
           <div className="flex justify-center gap-3 mt-3">
             <a
