@@ -17,7 +17,11 @@ function GuestDetailModal({ guest, onClose, onUpdated }) {
     setForm((prev) => ({ ...prev, [field]: value }));
 
   const handleSave = async () => {
-    const updated = await updateGuest(guest._id, form);
+    const payload = {
+      ...form,
+      personsCount: form.isAttending ? Number(form.personsCount) || 1 : 0,
+    };
+    const updated = await updateGuest(guest._id, payload);
     if (updated) {
       onUpdated(updated);
       setEditMode(false);
@@ -148,7 +152,7 @@ function GuestDetailModal({ guest, onClose, onUpdated }) {
                 label="Persons Count"
                 type="number"
                 value={form.personsCount}
-                onChange={(v) => handleChange("personsCount", Number(v))}
+                onChange={(v) => handleChange("personsCount", v)}
               />
             )}
 
