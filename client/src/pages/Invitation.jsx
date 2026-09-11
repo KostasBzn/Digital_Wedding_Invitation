@@ -26,7 +26,7 @@ function Invitation() {
 
   const apiKey = import.meta.env.VITE_GOOGLE_API;
   // coordinates for the locations
-  const CHURCH_COORDS = { lat: 37.9755, lng: 23.7348 };
+  const CHURCH_COORDS = { lat: 37.81695954802697, lng: 23.77899763534356 };
   const RESTAURANT_COORDS = { lat: 37.9838, lng: 23.7275 };
 
   const handleChange = (field, value) =>
@@ -218,9 +218,9 @@ function Invitation() {
       >
         <div>
           <h3 className="text-xl text-teal-green-dark mb-2">Τελετή</h3>
-          <p className="text-sm font-medium">Ιερός Ναός Αγίου Παντελεήμονα</p>
+          <p className="text-sm font-medium">Ιερός Ναός Παναγίας Φανερωμένης</p>
           <p className="text-xs text-gray-500">
-            Αλεξανδρουπόλεως, Αργυρούπολη, 164 51 Αθηνα
+            Αιόλου 8, Βουλιαγμένη 166 71, Αθήνα
           </p>
         </div>
         {!isLimited && (
@@ -308,7 +308,7 @@ function Invitation() {
           στηρίξετε στο νέο μας ξεκίνημα:
         </p>
         <p className="text-sm font-medium mt-3">
-          IBAN: GR78 0000 0000 0000 0000 0000 000
+          IBAN: GR17 0260 1750 0004 3020 0912 136
         </p>
       </section>
 
