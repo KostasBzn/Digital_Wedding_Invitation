@@ -21,7 +21,7 @@ function AdminPanel() {
 
   // dynamic invitation link
   const invitationLink = useMemo(() => {
-    return excludeExtra ? `${INVITATION_BASE_URL}?ext=1` : INVITATION_BASE_URL;
+    return excludeExtra ? `${INVITATION_BASE_URL}?v=1` : INVITATION_BASE_URL;
   }, [excludeExtra]);
 
   // copy invitation link
