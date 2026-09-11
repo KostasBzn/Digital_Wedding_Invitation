@@ -56,7 +56,7 @@ function Invitation() {
           Χρήστος &amp; Σαμσούλα
         </h1>
         <p className="text-sm tracking-widest text-gray-500">
-          ΣΑΒΒΑΤΟ 5 ΔΕΚΕΜΒΡΙΟΥ 2026 | 12:00
+          ΣΑΒΒΑΤΟ 5 ΔΕΚΕΜΒΡΙΟΥ 2026 | 18:30
         </p>
       </header>
 
