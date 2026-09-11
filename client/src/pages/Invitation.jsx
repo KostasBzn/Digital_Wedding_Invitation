@@ -326,7 +326,7 @@ function Invitation() {
           {/* facebook and instagram  */}
           <div className="flex justify-center gap-3 mt-3">
             <a
-              href="https://instagram.com/username"
+              href="https://www.instagram.com/chris.andriopoulos/"
               target="_blank"
               rel="noreferrer"
               className="text-teal-green-dark hover:opacity-70"
@@ -334,7 +334,7 @@ function Invitation() {
               <FaInstagram size={18} />
             </a>
             <a
-              href="https://facebook.com/username"
+              href="https://www.facebook.com/xristos.an"
               target="_blank"
               rel="noreferrer"
               className="text-teal-green-dark hover:opacity-70"
@@ -352,7 +352,7 @@ function Invitation() {
           {/* facebook and instagram */}
           <div className="flex justify-center gap-3 mt-3">
             <a
-              href="https://instagram.com/username"
+              href="https://www.instagram.com/chris.andriopoulos"
               target="_blank"
               rel="noreferrer"
               className="text-teal-green-dark hover:opacity-70"
@@ -360,7 +360,7 @@ function Invitation() {
               <FaInstagram size={18} />
             </a>
             <a
-              href="https://facebook.com/username"
+              href="https://www.facebook.com/xristos.an"
               target="_blank"
               rel="noreferrer"
               className="text-teal-green-dark hover:opacity-70"
