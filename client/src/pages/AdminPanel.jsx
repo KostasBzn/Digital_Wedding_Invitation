@@ -1,5 +1,4 @@
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
+import * as XLSX from "xlsx";
 import { useEffect, useMemo, useState } from "react";
 import { Download, Loader2, Copy, Check } from "lucide-react";
 import { useAdminContext } from "../context/AdminContext";
@@ -55,27 +54,20 @@ function AdminPanel() {
     };
   }, [guests]);
 
-  // export into pdf
+  // export into excel
   const handleExport = () => {
-    const doc = new jsPDF(); // default A4 size
+    const data = sortedGuests.map((g) => ({
+      Name: `${g.surname} ${g.name}`,
+      Attending: g.isAttending ? "Yes" : "No",
+      Persons: g.isAttending ? g.personsCount : "-",
+    }));
 
-    doc.setFontSize(14);
-    // (text, x, y) explanation -> 14mm from left, 15mm from top
-    doc.text("Guest List", 14, 15);
-
-    autoTable(doc, {
-      startY: 20,
-      head: [["#", "Name", "Attending", "Persons"]],
-      body: sortedGuests.map((g, index) => [
-        index + 1,
-        `${g.surname} ${g.name}`,
-        g.isAttending ? "Yes" : "No",
-        g.isAttending ? g.personsCount : "-",
-      ]),
-    });
+    const worksheet = XLSX.utils.json_to_sheet(data); // convert array of objects into a sheet
+    const workbook = XLSX.utils.book_new(); // create a new workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Guest List"); // name the tab
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-"); // date + time to avoid file overwrite
-    doc.save(`guest-list_${timestamp}.pdf`);
+    XLSX.writeFile(workbook, `guest-list_${timestamp}.xlsx`);
   };
 
   return (
