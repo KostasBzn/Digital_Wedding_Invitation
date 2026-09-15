@@ -59,10 +59,18 @@ function AdminPanel() {
     const data = sortedGuests.map((g) => ({
       Name: `${g.surname} ${g.name}`,
       Attending: g.isAttending ? "Yes" : "No",
-      Persons: g.isAttending ? g.personsCount : "-",
+      Persons: g.isAttending ? g.personsCount : 0,
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(data); // convert array of objects into a sheet
+
+    // columns widths
+    worksheet["!cols"] = [
+      { wch: 25 }, // name
+      { wch: 12 }, // attending
+      { wch: 10 }, // persons
+    ];
+
     const workbook = XLSX.utils.book_new(); // create a new workbook
     XLSX.utils.book_append_sheet(workbook, worksheet, "Guest List"); // name the tab
 
