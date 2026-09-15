@@ -5,6 +5,7 @@ A simple digital invitation I built for a friend's wedding, so he could skip pap
 ## What it does
 
 - Guests open a link that they can see the wedding details and submit theit presence / not presence
+- Interractive Google Maps with ceremony and restaurant for directions.
 - Two versions, some guests see only the church ceremony, others see both ceremony and restaurant
 - Admin panel with a basic login with full guest list, who is coming, who is not. Edit and delete entries in case of plan changing
   and export the whole list into excel file.
