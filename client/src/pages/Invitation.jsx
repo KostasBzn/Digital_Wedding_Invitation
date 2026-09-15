@@ -24,7 +24,16 @@ function Invitation() {
   const [submitted, setSubmitted] = useState(false);
   const [activePin, setActivePin] = useState(null);
 
+  // enviroment variables
   const apiKey = import.meta.env.VITE_GOOGLE_API;
+  const hisPhone = import.meta.env.VITE_HIS_PHONE;
+  const herPhone = import.meta.env.VITE_HER_PHONE;
+  const hisInsta = import.meta.env.VITE_HIS_INSTA;
+  const herInsta = import.meta.env.VITE_HER_INSTA;
+  const hisFb = import.meta.env.VITE_HIS_FB;
+  const herFb = import.meta.env.VITE_HER_FB;
+  const IBAN = import.meta.env.VITE_IBAN;
+
   // coordinates for the locations
   const CHURCH_COORDS = { lat: 37.816697, lng: 23.778526 };
   const RESTAURANT_COORDS = { lat: 37.853046, lng: 23.813512 };
@@ -315,9 +324,7 @@ function Invitation() {
           Χαιρόμαστε πολύ για την αγάπη σας. Αν επιθυμείτε, μπορείτε να μας
           στηρίξετε στο νέο μας ξεκίνημα:
         </p>
-        <p className="text-sm font-medium mt-3">
-          IBAN: GR17 0260 1750 0004 3020 0912 136
-        </p>
+        <p className="text-sm font-medium mt-3">IBAN: {IBAN}</p>
       </section>
 
       {/* Contact */}
@@ -330,11 +337,11 @@ function Invitation() {
             [ foto ]
           </div> */}
           <p className="text-teal-green-dark font-medium">Χρήστος</p>
-          <p className="text-xs text-gray-500 mt-1">τηλ. 697 9533908</p>
+          <p className="text-xs text-gray-500 mt-1">τηλ. {hisPhone}</p>
           {/* facebook and instagram  */}
           <div className="flex justify-center gap-3 mt-3">
             <a
-              href="https://www.instagram.com/chris.andriopoulos/"
+              href={hisInsta}
               target="_blank"
               rel="noreferrer"
               className="text-teal-green-dark hover:opacity-70"
@@ -342,7 +349,7 @@ function Invitation() {
               <FaInstagram size={18} />
             </a>
             <a
-              href="https://www.facebook.com/xristos.an"
+              href={hisFb}
               target="_blank"
               rel="noreferrer"
               className="text-teal-green-dark hover:opacity-70"
@@ -356,11 +363,11 @@ function Invitation() {
             [ foto ]
           </div> */}
           <p className="text-teal-green-dark font-medium">Σαμσούλα</p>
-          <p className="text-xs text-gray-500 mt-1">τηλ. 697 9533908</p>
+          <p className="text-xs text-gray-500 mt-1">τηλ. {herPhone}</p>
           {/* facebook and instagram */}
           <div className="flex justify-center gap-3 mt-3">
             <a
-              href="https://www.instagram.com/chris.andriopoulos"
+              href={herInsta}
               target="_blank"
               rel="noreferrer"
               className="text-teal-green-dark hover:opacity-70"
@@ -368,7 +375,7 @@ function Invitation() {
               <FaInstagram size={18} />
             </a>
             <a
-              href="https://www.facebook.com/xristos.an"
+              href={herFb}
               target="_blank"
               rel="noreferrer"
               className="text-teal-green-dark hover:opacity-70"
