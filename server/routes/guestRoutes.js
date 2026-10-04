@@ -10,7 +10,7 @@ import {
 
 const guestRoutes = express.Router();
 
-// the public one, the guest can submit
+// the public one, the guest submit
 guestRoutes.post("/add", addGuest);
 
 // the ones that only the admin can call from the control panel
