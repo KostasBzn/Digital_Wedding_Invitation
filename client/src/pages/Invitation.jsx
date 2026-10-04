@@ -9,6 +9,7 @@ import {
 } from "@vis.gl/react-google-maps";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { useGuestContext } from "../context/GuestContext";
+import floral from "../assets/an.png";
 
 function Invitation() {
   const [searchParams] = useSearchParams();
@@ -66,15 +67,18 @@ function Invitation() {
   return (
     <div className="bg-pearl-bush min-h-screen text-gray-700">
       {/* Hero */}
-      <header className="text-center pt-16 pb-10 px-4">
-        {/* placeholder for floral graphic image, to be replaced later */}
-        <div className="h-20 flex items-center justify-center text-gray-400 text-sm mb-4">
-          [ maybe an animation ]
+      <header className="text-center pt-10 pb-10 px-4 relative">
+        <div className="relative h-40 sm:h-138 flex items-center justify-center">
+          <img
+            src={floral}
+            alt=""
+            className="absolute inset-0 w-full h-full object-contain animate-fade-scale"
+          />
+          <h1 className="relative text-4xl sm:text-5xl text-teal-green-dark animate-fade-up">
+            Χρήστος &amp; Σαμσούλα
+          </h1>
         </div>
-        <h1 className="text-4xl sm:text-5xl text-teal-green-dark mb-2">
-          Χρήστος &amp; Σαμσούλα
-        </h1>
-        <p className="text-sm tracking-widest text-gray-500">
+        <p className="text-m tracking-widest text-gray-500 mt-2">
           ΣΑΒΒΑΤΟ 5 ΔΕΚΕΜΒΡΙΟΥ 2026 | 18:30
         </p>
       </header>
