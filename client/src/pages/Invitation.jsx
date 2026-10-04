@@ -79,31 +79,31 @@ function Invitation() {
           </h1>
         </div>
 
-        <p className="text-base sm:text-lg tracking-widest text-black mt-2">
+        <p className="text-sm sm:text-lg tracking-wide sm:tracking-widest text-black mt-2">
           ΜΕ ΧΑΡΑ ΣΑΣ ΠΡΟΣΚΑΛΟΥΜΕ ΣΤΟ ΓΑΜΟ ΜΑΣ
         </p>
 
-        <p className="text-base sm:text-lg tracking-widest text-black mt-2">
+        <p className="text-sm sm:text-lg tracking-wide sm:tracking-widest text-black mt-2">
           ΣΑΒΒΑΤΟ 5 ΔΕΚΕΜΒΡΙΟΥ 2026 | 18:30
         </p>
-        <div className="text-center mt-8 space-y-4">
+        <div className="text-center mt-6 sm:mt-8 space-y-3 sm:space-y-4">
           <div>
-            <p className="text-sm tracking-widest text-black font-medium">
+            <p className="text-xs sm:text-sm tracking-wide sm:tracking-widest text-black font-medium">
               ΟΙΚΟΓΕΝΕΙΕΣ:
             </p>
-            <p className="text-sm tracking-widest text-gray-500 mt-1">
+            <p className="text-xs sm:text-sm tracking-wide sm:tracking-widest text-gray-500 mt-1">
               ΚΩΝΣΤΑΝΤΙΝΟΣ ΒΑΣΙΛΕΙΑΔΗΣ &amp; ΕΥΑΓΓΕΛΙΑ ΔΑΝΕΖΗ
             </p>
-            <p className="text-sm tracking-widest text-gray-500">
+            <p className="text-xs sm:text-sm tracking-wide sm:tracking-widest text-gray-500">
               ΘΕΟΔΩΡΟΣ ΑΝΔΡΙΟΠΟΥΛΟΣ &amp; ΣΤΑΜΑΤΙΑ ΛΑΜΠΡΟΠΟΥΛΟΥ
             </p>
           </div>
 
           <div>
-            <p className="text-sm tracking-widest text-black font-medium">
+            <p className="text-xs sm:text-sm tracking-wide sm:tracking-widest text-black font-medium">
               ΚΟΥΜΠΑΡΕΣ:
             </p>
-            <p className="text-sm tracking-widest text-gray-500 mt-1">
+            <p className="text-xs sm:text-sm tracking-wide sm:tracking-widest text-gray-500 mt-1">
               ΑΝΝΑ ΦΑΡΜΑΚΗ &amp; ΑΣΗΜΙΝΑ ΑΝΔΡΙΟΠΟΥΛΟΥ
             </p>
           </div>
@@ -111,7 +111,7 @@ function Invitation() {
       </header>
 
       {/* Nav */}
-      <nav className="flex flex-wrap justify-center gap-4 sm:gap-8 text-s sm:text-m tracking-wide text-primary border-t border-b border-gray-300 py-3 px-4">
+      <nav className="flex flex-wrap justify-center gap-3 sm:gap-8 text-xs sm:text-m tracking-wide text-primary border-t border-b border-gray-300 py-2.5 sm:py-3 px-4">
         {!isLimited && (
           <a href="#rsvp" className="hover:opacity-70">
             RSVP
