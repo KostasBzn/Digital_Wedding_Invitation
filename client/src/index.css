@@ -3,11 +3,11 @@
 
 @theme {
   /* wedding/invitation*/
-  --color-blue: #34b7f1;
-  --color-teal-green: #128c7e;
-  --color-light-green: #25d366;
-  --color-teal-green-dark: #075e54;
-  --color-pearl-bush: #ece5dd;
+  --color-primary: #6b1d2f; /* headings, couple names, buttons, nav links, hover icons */
+  --color-primary-light: #8a3347; /* input focus borders, radio accents, success check icon */
+  --color-highlight: #25d366; /* reserved but unused */
+  --color-link: #34b7f1; /* "open in maps" link text */
+  --color-page-bg: #f9f6f0; /* background */
 
   /* admin panel - dark theme */
   --color-admin-bg: #14161a; /* main background */

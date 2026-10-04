@@ -65,7 +65,7 @@ function Invitation() {
   };
 
   return (
-    <div className="bg-pearl-bush min-h-screen text-gray-700">
+    <div className="bg-page-bg min-h-screen text-gray-700">
       {/* Hero */}
       <header className="text-center pt-10 pb-10 px-4 relative">
         <div className="relative h-80 sm:h-100 flex items-center justify-center">
@@ -111,7 +111,7 @@ function Invitation() {
       </header>
 
       {/* Nav */}
-      <nav className="flex flex-wrap justify-center gap-4 sm:gap-8 text-s sm:text-m tracking-wide text-teal-green-dark border-t border-b border-gray-300 py-3 px-4">
+      <nav className="flex flex-wrap justify-center gap-4 sm:gap-8 text-s sm:text-m tracking-wide text-primary border-t border-b border-gray-300 py-3 px-4">
         {!isLimited && (
           <a href="#rsvp" className="hover:opacity-70">
             RSVP
@@ -133,27 +133,10 @@ function Invitation() {
         </a>
       </nav>
 
-      {/* Our Story */}
-      {/* <section className="max-w-2xl mx-auto text-center px-4 py-12">
-        <h2 className="text-2xl text-teal-green-dark mb-4">Η ιστορία μας</h2>
-        <p className="text-sm leading-relaxed text-gray-600">
-          Εδώ θα μπει το κείμενο με την ιστορία του ζευγαριού. Λίγα λόγια για το
-          πώς γνωριστήκαμε, τη διαδρομή μας μέχρι σήμερα, και τη χαρά που
-          νιώθουμε που θα μοιραστούμε αυτή τη μέρα μαζί σας.
-        </p>
-      </section> */}
-
-      {/* Photo placeholder */}
-      {/* <div className="max-w-3xl mx-auto px-4">
-        <div className="w-full aspect-video bg-gray-200 flex items-center justify-center text-gray-400 text-sm rounded-lg">
-          [ Fotografia zeugariou ]
-        </div>
-      </div> */}
-
       {/* RSVP Form */}
       {!isLimited && (
         <section id="rsvp" className="max-w-md mx-auto px-4 py-16">
-          <h2 className="text-2xl text-teal-green-dark text-center mb-2">
+          <h2 className="text-2xl text-primary text-center mb-2">
             Ο ΓΑΜΟΣ ΜΑΣ
           </h2>
           <p className="text-m text-gray-500 text-center mb-8">
@@ -163,8 +146,8 @@ function Invitation() {
 
           {submitted ? (
             <div className="text-center bg-white rounded-xl p-6 border border-gray-200">
-              <Check size={32} className="mx-auto mb-2 text-teal-green" />
-              <p className="text-teal-green-dark font-medium">
+              <Check size={32} className="mx-auto mb-2 text-primary-light" />
+              <p className="text-primary font-medium">
                 Ευχαριστούμε για την απάντησή σας!
               </p>
             </div>
@@ -180,7 +163,7 @@ function Invitation() {
                     required
                     value={form.name}
                     onChange={(e) => handleChange("name", e.target.value)}
-                    className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
+                    className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-primary-light"
                   />
                 </div>
                 <div>
@@ -192,7 +175,7 @@ function Invitation() {
                     required
                     value={form.surname}
                     onChange={(e) => handleChange("surname", e.target.value)}
-                    className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
+                    className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-primary-light"
                   />
                 </div>
               </div>
@@ -208,7 +191,7 @@ function Invitation() {
                       name="attending"
                       checked={form.isAttending === true}
                       onChange={() => handleChange("isAttending", true)}
-                      className="accent-teal-green"
+                      className="accent-primary-light"
                     />
                     Ναι
                   </label>
@@ -218,7 +201,7 @@ function Invitation() {
                       name="attending"
                       checked={form.isAttending === false}
                       onChange={() => handleChange("isAttending", false)}
-                      className="accent-teal-green"
+                      className="accent-primary-light"
                     />
                     Όχι
                   </label>
@@ -239,7 +222,7 @@ function Invitation() {
                       onChange={(e) =>
                         handleChange("adultsCount", e.target.value)
                       }
-                      className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
+                      className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-primary-light"
                     />
                   </div>
                   <div>
@@ -253,7 +236,7 @@ function Invitation() {
                       onChange={(e) =>
                         handleChange("kidsCount", e.target.value)
                       }
-                      className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
+                      className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-primary-light"
                     />
                   </div>
                 </div>
@@ -266,7 +249,7 @@ function Invitation() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-teal-green-dark text-white rounded-full py-3 mt-4 flex items-center justify-center gap-2 disabled:opacity-60 hover:opacity-90 transition-opacity"
+                className="w-full bg-primary text-white rounded-full py-3 mt-4 flex items-center justify-center gap-2 disabled:opacity-60 hover:opacity-90 transition-opacity"
               >
                 {loading ? (
                   <Loader2 size={18} className="animate-spin" />
@@ -289,7 +272,7 @@ function Invitation() {
         }`}
       >
         <div>
-          <h3 className="text-xl text-teal-green-dark mb-2">ΤΕΛΕΤΗ</h3>
+          <h3 className="text-xl text-primary mb-2">ΤΕΛΕΤΗ</h3>
           <p className="text-m font-medium">Ιερός Ναός Παναγίας Φανερωμένης</p>
           <p className="text-s text-gray-500">
             Αιόλου 8, Βουλιαγμένη 166 71, Αθήνα
@@ -297,7 +280,7 @@ function Invitation() {
         </div>
         {!isLimited && (
           <div id="dexiosi">
-            <h3 className="text-xl text-teal-green-dark mb-2">ΔΕΞΙΩΣΗ</h3>
+            <h3 className="text-xl text-primary mb-2">ΔΕΞΙΩΣΗ</h3>
             <p className="text-m font-medium">Κτήμα Ιβέλια</p>
             <p className="text-s text-gray-500">
               Λαμπτρών, Κορωπί 166 72, Ελλάδα
@@ -346,7 +329,7 @@ function Invitation() {
                   onCloseClick={() => setActivePin(null)}
                 >
                   <div className="text-sm text-center p-1">
-                    <p className="font-medium text-teal-green-dark mb-1">
+                    <p className="font-medium text-primary mb-1">
                       {activePin === "teleti" ? "Τελετή" : "Δεξίωση"}
                     </p>
                     <a
@@ -357,7 +340,7 @@ function Invitation() {
                       }`}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-xs text-blue underline"
+                      className="text-xs text-link underline"
                     >
                       Άνοιγμα στον χάρτη
                     </a>
@@ -374,13 +357,7 @@ function Invitation() {
         id="lista"
         className="max-w-md mx-auto px-4 py-12 text-center border-t border-gray-300"
       >
-        <h2 className="text-2xl text-teal-green-dark mb-3">
-          Προαιρετική Λίστα Γάμου
-        </h2>
-        {/* <p className="text-sm text-gray-600">
-          Χαιρόμαστε πολύ για την αγάπη σας. Αν επιθυμείτε, μπορείτε να μας
-          στηρίξετε στο νέο μας ξεκίνημα:
-        </p> */}
+        <h2 className="text-2xl text-primary mb-3">Προαιρετική Λίστα Γάμου</h2>
         <p className="text-m font-medium mt-3">IBAN: {IBAN}</p>
       </section>
 
@@ -390,18 +367,14 @@ function Invitation() {
         className="max-w-2xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 gap-6 text-center border-t border-gray-300"
       >
         <div className="bg-white rounded-xl p-6 border border-gray-200">
-          {/* <div className="w-24 h-24 mx-auto mb-3 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
-            [ foto ]
-          </div> */}
-          <p className="text-teal-green-dark font-medium">Χρήστος</p>
+          <p className="text-primary font-medium">Χρήστος</p>
           <p className="text-xs text-gray-500 mt-1">τηλ. {hisPhone}</p>
-          {/* facebook and instagram  */}
           <div className="flex justify-center gap-3 mt-3">
             <a
               href={hisInsta}
               target="_blank"
               rel="noreferrer"
-              className="text-teal-green-dark hover:opacity-70"
+              className="text-primary hover:opacity-70"
             >
               <FaInstagram size={18} />
             </a>
@@ -409,25 +382,21 @@ function Invitation() {
               href={hisFb}
               target="_blank"
               rel="noreferrer"
-              className="text-teal-green-dark hover:opacity-70"
+              className="text-primary hover:opacity-70"
             >
               <FaFacebook size={18} />
             </a>
           </div>
         </div>
         <div className="bg-white rounded-xl p-6 border border-gray-200">
-          {/* <div className="w-24 h-24 mx-auto mb-3 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
-            [ foto ]
-          </div> */}
-          <p className="text-teal-green-dark font-medium">Σαμψούλα</p>
+          <p className="text-primary font-medium">Σαμψούλα</p>
           <p className="text-xs text-gray-500 mt-1">τηλ. {herPhone}</p>
-          {/* facebook and instagram */}
           <div className="flex justify-center gap-3 mt-3">
             <a
               href={herInsta}
               target="_blank"
               rel="noreferrer"
-              className="text-teal-green-dark hover:opacity-70"
+              className="text-primary hover:opacity-70"
             >
               <FaInstagram size={18} />
             </a>
@@ -435,7 +404,7 @@ function Invitation() {
               href={herFb}
               target="_blank"
               rel="noreferrer"
-              className="text-teal-green-dark hover:opacity-70"
+              className="text-primary hover:opacity-70"
             >
               <FaFacebook size={18} />
             </a>
