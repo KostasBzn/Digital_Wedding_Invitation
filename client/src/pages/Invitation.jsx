@@ -68,26 +68,55 @@ function Invitation() {
     <div className="bg-pearl-bush min-h-screen text-gray-700">
       {/* Hero */}
       <header className="text-center pt-10 pb-10 px-4 relative">
-        <div className="relative h-40 sm:h-138 flex items-center justify-center">
+        <div className="relative h-80 sm:h-100 flex items-center justify-center">
           <img
             src={floral}
             alt=""
             className="absolute inset-0 w-full h-full object-contain animate-fade-scale"
           />
-          <h1 className="relative text-4xl sm:text-5xl text-teal-green-dark animate-fade-up">
-            Χρήστος &amp; Σαμσούλα
+          <h1 className="relative text-4xl sm:text-5xl text-black font-display animate-fade-up">
+            ΧΡΗΣΤΟΣ &amp; ΣΑΜΨΟΥΛΑ
           </h1>
         </div>
-        <p className="text-m tracking-widest text-gray-500 mt-2">
+
+        <p className="text-lg tracking-widest text-black mt-2">
+          ΜΕ ΧΑΡΑ ΣΑΣ ΠΡΟΣΚΑΛΟΥΜΕ ΣΤΟ ΓΑΜΟ ΜΑΣ
+        </p>
+
+        <p className="text-lg tracking-widest text-black mt-2">
           ΣΑΒΒΑΤΟ 5 ΔΕΚΕΜΒΡΙΟΥ 2026 | 18:30
         </p>
+        <div className="text-center mt-8 space-y-4">
+          <div>
+            <p className="text-sm tracking-widest text-black font-medium">
+              ΟΙΚΟΓΕΝΕΙΕΣ:
+            </p>
+            <p className="text-sm tracking-widest text-gray-500 mt-1">
+              ΚΩΝΣΤΑΝΤΙΝΟΣ ΒΑΣΙΛΕΙΑΔΗΣ &amp; ΕΥΑΓΓΕΛΙΑ ΔΑΝΕΖΗ
+            </p>
+            <p className="text-sm tracking-widest text-gray-500">
+              ΘΕΟΔΩΡΟΣ ΑΝΔΡΙΟΠΟΥΛΟΣ &amp; ΣΤΑΜΑΤΙΑ ΛΑΜΠΡΟΠΟΥΛΟΥ
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm tracking-widest text-black font-medium">
+              ΚΟΥΜΠΑΡΕΣ:
+            </p>
+            <p className="text-sm tracking-widest text-gray-500 mt-1">
+              ΑΝΝΑ ΦΑΡΜΑΚΗ &amp; ΑΣΗΜΙΝΑ ΑΝΔΡΙΟΠΟΥΛΟΥ
+            </p>
+          </div>
+        </div>
       </header>
 
       {/* Nav */}
-      <nav className="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs sm:text-sm tracking-wide text-teal-green-dark border-t border-b border-gray-300 py-3 px-4">
-        <a href="#rsvp" className="hover:opacity-70">
-          RSVP
-        </a>
+      <nav className="flex flex-wrap justify-center gap-4 sm:gap-8 text-s sm:text-m tracking-wide text-teal-green-dark border-t border-b border-gray-300 py-3 px-4">
+        {!isLimited && (
+          <a href="#rsvp" className="hover:opacity-70">
+            RSVP
+          </a>
+        )}
         <a href="#teleti" className="hover:opacity-70">
           ΤΕΛΕΤΗ
         </a>
@@ -122,129 +151,133 @@ function Invitation() {
       </div> */}
 
       {/* RSVP Form */}
-      <section id="rsvp" className="max-w-md mx-auto px-4 py-16">
-        <h2 className="text-2xl text-teal-green-dark text-center mb-2">
-          Ο γάμος μας
-        </h2>
-        <p className="text-sm text-gray-500 text-center mb-8">
-          Θα χαρούμε πολύ αν μας ενημερώσετε για την παρουσία σας έως τις 15
-          Νοεμβρίου 2026
-        </p>
+      {!isLimited && (
+        <section id="rsvp" className="max-w-md mx-auto px-4 py-16">
+          <h2 className="text-2xl text-teal-green-dark text-center mb-2">
+            Ο ΓΑΜΟΣ ΜΑΣ
+          </h2>
+          <p className="text-m text-gray-500 text-center mb-8">
+            Θα χαρούμε πολύ να μας ενημερώσετε για την παρουσία σας έως τις 20
+            Νοεμβρίου 2026
+          </p>
 
-        {submitted ? (
-          <div className="text-center bg-white rounded-xl p-6 border border-gray-200">
-            <Check size={32} className="mx-auto mb-2 text-teal-green" />
-            <p className="text-teal-green-dark font-medium">
-              Ευχαριστούμε για την απάντησή σας!
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="text-xs text-gray-500 block mb-1">
-                  Όνομα *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={(e) => handleChange("name", e.target.value)}
-                  className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
-                />
-              </div>
-              <div>
-                <label className="text-xs text-gray-500 block mb-1">
-                  Επώνυμο *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={form.surname}
-                  onChange={(e) => handleChange("surname", e.target.value)}
-                  className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
-                />
-              </div>
+          {submitted ? (
+            <div className="text-center bg-white rounded-xl p-6 border border-gray-200">
+              <Check size={32} className="mx-auto mb-2 text-teal-green" />
+              <p className="text-teal-green-dark font-medium">
+                Ευχαριστούμε για την απάντησή σας!
+              </p>
             </div>
-
-            <div>
-              <label className="text-xs text-gray-500 block mb-2">
-                Θα παρευρεθείτε; *
-              </label>
-              <div className="flex gap-6 text-sm">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="attending"
-                    checked={form.isAttending === true}
-                    onChange={() => handleChange("isAttending", true)}
-                    className="accent-teal-green"
-                  />
-                  Ναι
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="attending"
-                    checked={form.isAttending === false}
-                    onChange={() => handleChange("isAttending", false)}
-                    className="accent-teal-green"
-                  />
-                  Όχι
-                </label>
-              </div>
-            </div>
-
-            {form.isAttending && (
-              <div className="grid grid-cols-2 gap-4">
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs text-gray-500 block mb-1">
-                    Ενήλικες *
+                  <label className="text-s text-gray-500 block mb-1">
+                    Όνομα *
                   </label>
                   <input
-                    type="number"
-                    min="1"
+                    type="text"
                     required
-                    value={form.adultsCount}
-                    onChange={(e) =>
-                      handleChange("adultsCount", e.target.value)
-                    }
+                    value={form.name}
+                    onChange={(e) => handleChange("name", e.target.value)}
                     className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-500 block mb-1">
-                    Παιδιά
+                  <label className="text-s text-gray-500 block mb-1">
+                    Επώνυμο *
                   </label>
                   <input
-                    type="number"
-                    min="0"
-                    value={form.kidsCount}
-                    onChange={(e) => handleChange("kidsCount", e.target.value)}
+                    type="text"
+                    required
+                    value={form.surname}
+                    onChange={(e) => handleChange("surname", e.target.value)}
                     className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
                   />
                 </div>
               </div>
-            )}
 
-            {error && (
-              <p className="text-red-500 text-sm text-center">{error}</p>
-            )}
+              <div>
+                <label className="text-s text-gray-500 block mb-2">
+                  Θα παρευρεθείτε; *
+                </label>
+                <div className="flex gap-6 text-sm">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="attending"
+                      checked={form.isAttending === true}
+                      onChange={() => handleChange("isAttending", true)}
+                      className="accent-teal-green"
+                    />
+                    Ναι
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="attending"
+                      checked={form.isAttending === false}
+                      onChange={() => handleChange("isAttending", false)}
+                      className="accent-teal-green"
+                    />
+                    Όχι
+                  </label>
+                </div>
+              </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-teal-green-dark text-white rounded-full py-3 mt-4 flex items-center justify-center gap-2 disabled:opacity-60 hover:opacity-90 transition-opacity"
-            >
-              {loading ? (
-                <Loader2 size={18} className="animate-spin" />
-              ) : (
-                "Υποβολή"
+              {form.isAttending && (
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-s text-gray-500 block mb-1">
+                      Ενήλικες *
+                    </label>
+                    <input
+                      type="number"
+                      min="1"
+                      required
+                      value={form.adultsCount}
+                      onChange={(e) =>
+                        handleChange("adultsCount", e.target.value)
+                      }
+                      className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-s text-gray-500 block mb-1">
+                      Παιδιά
+                    </label>
+                    <input
+                      type="number"
+                      min="0"
+                      value={form.kidsCount}
+                      onChange={(e) =>
+                        handleChange("kidsCount", e.target.value)
+                      }
+                      className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
+                    />
+                  </div>
+                </div>
               )}
-            </button>
-          </form>
-        )}
-      </section>
+
+              {error && (
+                <p className="text-red-500 text-sm text-center">{error}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-teal-green-dark text-white rounded-full py-3 mt-4 flex items-center justify-center gap-2 disabled:opacity-60 hover:opacity-90 transition-opacity"
+              >
+                {loading ? (
+                  <Loader2 size={18} className="animate-spin" />
+                ) : (
+                  "Υποβολή"
+                )}
+              </button>
+            </form>
+          )}
+        </section>
+      )}
 
       {/* Venues */}
       <section
@@ -256,17 +289,17 @@ function Invitation() {
         }`}
       >
         <div>
-          <h3 className="text-xl text-teal-green-dark mb-2">Τελετή</h3>
-          <p className="text-sm font-medium">Ιερός Ναός Παναγίας Φανερωμένης</p>
-          <p className="text-xs text-gray-500">
+          <h3 className="text-xl text-teal-green-dark mb-2">ΤΕΛΕΤΗ</h3>
+          <p className="text-m font-medium">Ιερός Ναός Παναγίας Φανερωμένης</p>
+          <p className="text-s text-gray-500">
             Αιόλου 8, Βουλιαγμένη 166 71, Αθήνα
           </p>
         </div>
         {!isLimited && (
           <div id="dexiosi">
-            <h3 className="text-xl text-teal-green-dark mb-2">Δεξίωση</h3>
-            <p className="text-sm font-medium">Κτήμα Ιβέλια</p>
-            <p className="text-xs text-gray-500">
+            <h3 className="text-xl text-teal-green-dark mb-2">ΔΕΞΙΩΣΗ</h3>
+            <p className="text-m font-medium">Κτήμα Ιβέλια</p>
+            <p className="text-s text-gray-500">
               Λαμπτρών, Κορωπί 166 72, Ελλάδα
             </p>
           </div>
@@ -341,12 +374,14 @@ function Invitation() {
         id="lista"
         className="max-w-md mx-auto px-4 py-12 text-center border-t border-gray-300"
       >
-        <h2 className="text-2xl text-teal-green-dark mb-3">Λίστα γάμου</h2>
-        <p className="text-sm text-gray-600">
+        <h2 className="text-2xl text-teal-green-dark mb-3">
+          Προαιρετική Λίστα Γάμου
+        </h2>
+        {/* <p className="text-sm text-gray-600">
           Χαιρόμαστε πολύ για την αγάπη σας. Αν επιθυμείτε, μπορείτε να μας
           στηρίξετε στο νέο μας ξεκίνημα:
-        </p>
-        <p className="text-sm font-medium mt-3">IBAN: {IBAN}</p>
+        </p> */}
+        <p className="text-m font-medium mt-3">IBAN: {IBAN}</p>
       </section>
 
       {/* Contact */}
@@ -384,7 +419,7 @@ function Invitation() {
           {/* <div className="w-24 h-24 mx-auto mb-3 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-xs">
             [ foto ]
           </div> */}
-          <p className="text-teal-green-dark font-medium">Σαμσούλα</p>
+          <p className="text-teal-green-dark font-medium">Σαμψούλα</p>
           <p className="text-xs text-gray-500 mt-1">τηλ. {herPhone}</p>
           {/* facebook and instagram */}
           <div className="flex justify-center gap-3 mt-3">
