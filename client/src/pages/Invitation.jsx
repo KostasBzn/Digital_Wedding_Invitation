@@ -444,7 +444,7 @@ function Invitation() {
       </section>
 
       <footer className="text-center text-xs text-gray-400 pb-10">
-        Με αγάπη, Χρήστος &amp; Σαμσούλα
+        Με αγάπη, Χρήστος &amp; Σαμψούλα
       </footer>
     </div>
   );
