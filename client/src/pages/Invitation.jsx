@@ -9,7 +9,7 @@ import {
 } from "@vis.gl/react-google-maps";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { useGuestContext } from "../context/GuestContext";
-import floral from "../assets/an.png";
+import floral from "../assets/an1.png";
 
 function Invitation() {
   const [searchParams] = useSearchParams();
@@ -68,7 +68,7 @@ function Invitation() {
     <div className="bg-page-bg min-h-screen text-gray-700">
       {/* Hero */}
       <header className="text-center pt-10 pb-10 px-4 relative">
-        <div className="relative h-80 sm:h-100 flex items-center justify-center">
+        <div className="relative h-80 sm:h-110 flex items-center justify-center">
           <img
             src={floral}
             alt=""
