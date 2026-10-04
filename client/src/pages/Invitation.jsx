@@ -277,17 +277,19 @@ function Invitation() {
         }`}
       >
         <div>
-          <h3 className="text-xl text-primary mb-2">ΤΕΛΕΤΗ</h3>
-          <p className="text-m font-medium">Ιερός Ναός Παναγίας Φανερωμένης</p>
-          <p className="text-s text-gray-500">
+          <h3 className="text-xl sm:text-2xl text-primary mb-2">ΤΕΛΕΤΗ</h3>
+          <p className="text-sm sm:text-m font-medium">
+            Ιερός Ναός Παναγίας Φανερωμένης
+          </p>
+          <p className="text-sm sm:text-m text-gray-500">
             Αιόλου 8, Βουλιαγμένη 166 71, Αθήνα
           </p>
         </div>
         {!isLimited && (
           <div id="dexiosi">
-            <h3 className="text-xl text-primary mb-2">ΔΕΞΙΩΣΗ</h3>
-            <p className="text-m font-medium">Κτήμα Ιβέλια</p>
-            <p className="text-s text-gray-500">
+            <h3 className="text-xl sm:text-2xl text-primary mb-2">ΔΕΞΙΩΣΗ</h3>
+            <p className="text-sm sm:text-m font-medium">Κτήμα Ιβέλια</p>
+            <p className="text-sm sm:text-m text-gray-500">
               Λαμπτρών, Κορωπί 166 72, Ελλάδα
             </p>
           </div>
@@ -362,8 +364,10 @@ function Invitation() {
         id="lista"
         className="max-w-md mx-auto px-4 py-12 text-center border-t border-gray-300"
       >
-        <h2 className="text-2xl text-primary mb-3">Προαιρετική Λίστα Γάμου</h2>
-        <p className="text-m font-medium mt-3">IBAN: {IBAN}</p>
+        <h2 className="text-xl sm:text-2xl text-primary mb-3">
+          Προαιρετική Λίστα Γάμου
+        </h2>
+        <p className="text-sm sm:text-m font-medium mt-3">IBAN: {IBAN}</p>
       </section>
 
       {/* Contact */}
