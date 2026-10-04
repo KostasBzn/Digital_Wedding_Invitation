@@ -7,6 +7,7 @@ import guestRoutes from "./routes/guestRoutes.js";
 import errorHandler from "./middlewares/errorHandler.js";
 
 const app = express();
+app.set("trust proxy", 1);
 const port = process.env.PORT;
 const clientURL = process.env.CLIENT_URL;
 
