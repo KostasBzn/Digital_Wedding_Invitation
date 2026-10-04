@@ -79,11 +79,11 @@ function Invitation() {
           </h1>
         </div>
 
-        <p className="text-sm sm:text-lg tracking-wide sm:tracking-widest text-black mt-2">
+        <p className="text-md sm:text-lg tracking-wide sm:tracking-widest text-black mt-2">
           ΜΕ ΧΑΡΑ ΣΑΣ ΠΡΟΣΚΑΛΟΥΜΕ ΣΤΟ ΓΑΜΟ ΜΑΣ
         </p>
 
-        <p className="text-sm sm:text-lg tracking-wide sm:tracking-widest text-black mt-2">
+        <p className="text-md sm:text-lg tracking-wide sm:tracking-widest text-black mt-2">
           ΣΑΒΒΑΤΟ 5 ΔΕΚΕΜΒΡΙΟΥ 2026 | 18:30
         </p>
         <div className="text-center mt-6 sm:mt-8 space-y-3 sm:space-y-4">
