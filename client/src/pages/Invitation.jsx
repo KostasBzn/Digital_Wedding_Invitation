@@ -135,27 +135,30 @@ function Invitation() {
 
       {/* RSVP Form */}
       {!isLimited && (
-        <section id="rsvp" className="max-w-md mx-auto px-4 py-16">
-          <h2 className="text-2xl text-primary text-center mb-2">
+        <section id="rsvp" className="max-w-md mx-auto px-4 py-10 sm:py-16">
+          <h2 className="text-xl sm:text-2xl text-primary text-center mb-1 sm:mb-2">
             Ο ΓΑΜΟΣ ΜΑΣ
           </h2>
-          <p className="text-m text-gray-500 text-center mb-8">
+          <p className="text-sm sm:text-m text-gray-500 text-center mb-6 sm:mb-8">
             Θα χαρούμε πολύ να μας ενημερώσετε για την παρουσία σας έως τις 20
             Νοεμβρίου 2026
           </p>
 
           {submitted ? (
-            <div className="text-center bg-white rounded-xl p-6 border border-gray-200">
-              <Check size={32} className="mx-auto mb-2 text-primary-light" />
-              <p className="text-primary font-medium">
+            <div className="text-center bg-white rounded-xl p-5 sm:p-6 border border-gray-200">
+              <Check
+                size={28}
+                className="mx-auto mb-2 text-primary-light sm:w-8 sm:h-8"
+              />
+              <p className="text-sm sm:text-base text-primary font-medium">
                 Ευχαριστούμε για την απάντησή σας!
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="text-s text-gray-500 block mb-1">
+                  <label className="text-xs sm:text-s text-gray-500 block mb-1">
                     Όνομα *
                   </label>
                   <input
@@ -163,11 +166,11 @@ function Invitation() {
                     required
                     value={form.name}
                     onChange={(e) => handleChange("name", e.target.value)}
-                    className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-primary-light"
+                    className="w-full border-b border-gray-400 bg-transparent py-1 text-sm sm:text-base outline-none focus:border-primary-light"
                   />
                 </div>
                 <div>
-                  <label className="text-s text-gray-500 block mb-1">
+                  <label className="text-xs sm:text-s text-gray-500 block mb-1">
                     Επώνυμο *
                   </label>
                   <input
@@ -175,16 +178,16 @@ function Invitation() {
                     required
                     value={form.surname}
                     onChange={(e) => handleChange("surname", e.target.value)}
-                    className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-primary-light"
+                    className="w-full border-b border-gray-400 bg-transparent py-1 text-sm sm:text-base outline-none focus:border-primary-light"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-s text-gray-500 block mb-2">
+                <label className="text-xs sm:text-s text-gray-500 block mb-1.5 sm:mb-2">
                   Θα παρευρεθείτε; *
                 </label>
-                <div className="flex gap-6 text-sm">
+                <div className="flex gap-4 sm:gap-6 text-sm">
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="radio"
@@ -209,9 +212,9 @@ function Invitation() {
               </div>
 
               {form.isAttending && (
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className="text-s text-gray-500 block mb-1">
+                    <label className="text-xs sm:text-s text-gray-500 block mb-1">
                       Ενήλικες *
                     </label>
                     <input
@@ -222,11 +225,11 @@ function Invitation() {
                       onChange={(e) =>
                         handleChange("adultsCount", e.target.value)
                       }
-                      className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-primary-light"
+                      className="w-full border-b border-gray-400 bg-transparent py-1 text-sm sm:text-base outline-none focus:border-primary-light"
                     />
                   </div>
                   <div>
-                    <label className="text-s text-gray-500 block mb-1">
+                    <label className="text-xs sm:text-s text-gray-500 block mb-1">
                       Παιδιά
                     </label>
                     <input
@@ -236,20 +239,22 @@ function Invitation() {
                       onChange={(e) =>
                         handleChange("kidsCount", e.target.value)
                       }
-                      className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-primary-light"
+                      className="w-full border-b border-gray-400 bg-transparent py-1 text-sm sm:text-base outline-none focus:border-primary-light"
                     />
                   </div>
                 </div>
               )}
 
               {error && (
-                <p className="text-red-500 text-sm text-center">{error}</p>
+                <p className="text-xs sm:text-sm text-red-500 text-center">
+                  {error}
+                </p>
               )}
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-primary text-white rounded-full py-3 mt-4 flex items-center justify-center gap-2 disabled:opacity-60 hover:opacity-90 transition-opacity"
+                className="w-full bg-primary text-white text-sm sm:text-base rounded-full py-2.5 sm:py-3 mt-3 sm:mt-4 flex items-center justify-center gap-2 disabled:opacity-60 hover:opacity-90 transition-opacity"
               >
                 {loading ? (
                   <Loader2 size={18} className="animate-spin" />
