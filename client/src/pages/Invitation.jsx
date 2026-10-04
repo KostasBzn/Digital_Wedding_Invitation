@@ -68,13 +68,13 @@ function Invitation() {
     <div className="bg-page-bg min-h-screen text-gray-700">
       {/* Hero */}
       <header className="text-center pt-10 pb-10 px-4 relative">
-        <div className="relative h-80 sm:h-110 flex items-center justify-center">
+        <div className="relative h-80 sm:h-125 flex items-center justify-center">
           <img
             src={floral}
             alt=""
             className="absolute inset-0 w-full h-full object-contain animate-fade-scale"
           />
-          <h1 className="relative text-4xl sm:text-5xl text-black font-display animate-fade-up">
+          <h1 className="relative text-3xl sm:text-5xl text-black font-display animate-fade-up">
             ΧΡΗΣΤΟΣ &amp; ΣΑΜΨΟΥΛΑ
           </h1>
         </div>
