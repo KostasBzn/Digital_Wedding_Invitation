@@ -19,7 +19,8 @@ function Invitation() {
     name: "",
     surname: "",
     isAttending: true,
-    personsCount: 1,
+    adultsCount: 1,
+    kidsCount: 0,
   });
   const [submitted, setSubmitted] = useState(false);
   const [activePin, setActivePin] = useState(null);
@@ -55,7 +56,8 @@ function Invitation() {
       name: form.name,
       surname: form.surname,
       isAttending: form.isAttending,
-      personsCount: form.isAttending ? Number(form.personsCount) || 1 : 0,
+      adultsCount: form.isAttending ? Number(form.adultsCount) || 1 : 0,
+      kidsCount: form.isAttending ? Number(form.kidsCount) || 0 : 0,
     };
     const result = await addGuest(payload);
     if (result) setSubmitted(true);
@@ -190,18 +192,34 @@ function Invitation() {
             </div>
 
             {form.isAttending && (
-              <div>
-                <label className="text-xs text-gray-500 block mb-1">
-                  Αριθμός ατόμων *
-                </label>
-                <input
-                  type="number"
-                  min="1"
-                  required
-                  value={form.personsCount}
-                  onChange={(e) => handleChange("personsCount", e.target.value)}
-                  className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
-                />
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs text-gray-500 block mb-1">
+                    Ενήλικες *
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    required
+                    value={form.adultsCount}
+                    onChange={(e) =>
+                      handleChange("adultsCount", e.target.value)
+                    }
+                    className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs text-gray-500 block mb-1">
+                    Παιδιά
+                  </label>
+                  <input
+                    type="number"
+                    min="0"
+                    value={form.kidsCount}
+                    onChange={(e) => handleChange("kidsCount", e.target.value)}
+                    className="w-full border-b border-gray-400 bg-transparent py-1 outline-none focus:border-teal-green"
+                  />
+                </div>
               </div>
             )}
 

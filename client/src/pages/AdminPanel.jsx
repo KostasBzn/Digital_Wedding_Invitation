@@ -43,14 +43,14 @@ function AdminPanel() {
   const stats = useMemo(() => {
     const attending = guests.filter((g) => g.isAttending);
     const notAttending = guests.filter((g) => !g.isAttending);
-    const attendingCount = attending.reduce(
-      (sum, g) => sum + g.personsCount,
-      0,
-    );
+    const adultsTotal = attending.reduce((sum, g) => sum + g.adultsCount, 0);
+    const kidsTotal = attending.reduce((sum, g) => sum + g.kidsCount, 0);
     return {
       attendingCount: attending.length,
       notAttendingCount: notAttending.length,
-      headcount: attendingCount,
+      adultsTotal,
+      kidsTotal,
+      headcount: adultsTotal + kidsTotal,
     };
   }, [guests]);
 
@@ -59,7 +59,8 @@ function AdminPanel() {
     const data = sortedGuests.map((g) => ({
       Name: `${g.surname} ${g.name}`,
       Attending: g.isAttending ? "Yes" : "No",
-      Persons: g.isAttending ? g.personsCount : 0,
+      Adults: g.isAttending ? g.adultsCount : 0,
+      Kids: g.isAttending ? g.kidsCount : 0,
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(data); // convert array of objects into a sheet
@@ -68,7 +69,8 @@ function AdminPanel() {
     worksheet["!cols"] = [
       { wch: 25 }, // name
       { wch: 12 }, // attending
-      { wch: 10 }, // persons
+      { wch: 10 }, // adults
+      { wch: 10 }, // kids
     ];
 
     const workbook = XLSX.utils.book_new(); // create a new workbook
@@ -131,7 +133,7 @@ function AdminPanel() {
           Guest List
         </h1>
 
-        <div className="grid grid-cols-3 gap-3 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-6">
           <StatCard
             label="Attending"
             value={stats.attendingCount}
@@ -143,12 +145,21 @@ function AdminPanel() {
             color="text-admin-danger"
           />
           <StatCard
+            label="Adults"
+            value={stats.adultsTotal}
+            color="text-admin-accent"
+          />
+          <StatCard
+            label="Kids"
+            value={stats.kidsTotal}
+            color="text-admin-accent"
+          />
+          <StatCard
             label="Total Headcount"
             value={stats.headcount}
             color="text-admin-accent"
           />
         </div>
-
         {loading ? (
           <div className="flex justify-center py-12">
             <Loader2 size={28} className="animate-spin text-admin-accent" />
@@ -172,7 +183,7 @@ function AdminPanel() {
                   <div className="flex items-center gap-3">
                     {guest.isAttending && (
                       <span className="text-admin-text-muted text-xs">
-                        {guest.personsCount} pax
+                        {guest.adultsCount + guest.kidsCount} pax
                       </span>
                     )}
                     <span

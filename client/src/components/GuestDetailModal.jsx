@@ -10,7 +10,8 @@ function GuestDetailModal({ guest, onClose, onUpdated }) {
     name: guest.name,
     surname: guest.surname,
     isAttending: guest.isAttending,
-    personsCount: guest.personsCount,
+    adultsCount: guest.adultsCount,
+    kidsCount: guest.kidsCount,
   });
 
   const handleChange = (field, value) =>
@@ -19,7 +20,8 @@ function GuestDetailModal({ guest, onClose, onUpdated }) {
   const handleSave = async () => {
     const payload = {
       ...form,
-      personsCount: form.isAttending ? Number(form.personsCount) || 1 : 0,
+      adultsCount: form.isAttending ? Number(form.adultsCount) || 1 : 0,
+      kidsCount: form.isAttending ? Number(form.kidsCount) || 0 : 0,
     };
     const updated = await updateGuest(guest._id, payload);
     if (updated) {
@@ -65,7 +67,10 @@ function GuestDetailModal({ guest, onClose, onUpdated }) {
               }
             />
             {guest.isAttending && (
-              <Detail label="Persons Count" value={guest.personsCount} />
+              <>
+                <Detail label="Adults" value={guest.adultsCount} />
+                <Detail label="Kids" value={guest.kidsCount} />
+              </>
             )}
             <Detail
               label="Submitted"
@@ -148,12 +153,20 @@ function GuestDetailModal({ guest, onClose, onUpdated }) {
             </div>
 
             {form.isAttending && (
-              <Field
-                label="Persons Count"
-                type="number"
-                value={form.personsCount}
-                onChange={(v) => handleChange("personsCount", v)}
-              />
+              <div className="grid grid-cols-2 gap-3">
+                <Field
+                  label="Adults"
+                  type="number"
+                  value={form.adultsCount}
+                  onChange={(v) => handleChange("adultsCount", v)}
+                />
+                <Field
+                  label="Kids"
+                  type="number"
+                  value={form.kidsCount}
+                  onChange={(v) => handleChange("kidsCount", v)}
+                />
+              </div>
             )}
 
             <div className="flex gap-2 pt-2">
