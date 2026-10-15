@@ -1,15 +1,14 @@
 @import "tailwindcss";
-/* @import url("https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap"); */
 
 @theme {
-  /* wedding/invitation*/
-  --color-primary: #6b1d2f; /* headings, couple names, buttons, nav links, hover icons */
-  --color-primary-light: #8a3347; /* input focus borders, radio accents, success check icon */
-  --color-highlight: #25d366; /* reserved but unused */
-  --color-link: #34b7f1; /* "open in maps" link text */
-  --color-page-bg: #f9f6f0; /* background */
+  /* wedding invitation */
+  --color-ink: #151515; /* main text, buttons, icons */
+  --color-ink-soft: #5d615b; /* secondary text, labels */
+  --color-line: #b8bcb5; /* card borders */
+  --color-card: #f3f4f1;
+  --color-page-bg: #e9ebe7;
 
-  /* admin panel - dark theme */
+  /* admin panel */
   --color-admin-bg: #14161a; /* main background */
   --color-admin-surface: #1e2126; /* cards, panels, table rows */
   --color-admin-border: #2c2f36; /* borders/dividers */
@@ -20,42 +19,95 @@
   --color-admin-success: #25d366; /* success states */
 
   --font-display: "Zen Kurenaido", sans-serif;
+  --font-serif: "EB Garamond", Georgia, serif; /* has Greek glyphs */
+
+  --tracking-invite: 0.28em;
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body {
-  width: 100%;
   min-height: 100vh;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-@keyframes fadeScaleIn {
+/* Scroll reveal: add "reveal" to an element, useReveal adds "is-visible".
+   Stagger with style={{ "--reveal-delay": "200ms" }} */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 1s var(--ease-soft),
+    transform 1.2s var(--ease-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* photo soft zoom-out while fading in */
+.reveal-scale {
+  transform: scale(1.06);
+  transition-duration: 1.4s, 1.8s;
+}
+
+/* eucalyptus sweep in from their own corner */
+.reveal-tl {
+  transform-origin: top left;
+  transform: translate(-4%, -4%) rotate(-4deg) scale(0.96);
+}
+.reveal-tr {
+  transform-origin: top right;
+  transform: translate(4%, -4%) rotate(4deg) scale(0.96);
+}
+.reveal-bl {
+  transform-origin: bottom left;
+  transform: translate(-4%, 4%) rotate(4deg) scale(0.96);
+}
+.reveal-br {
+  transform-origin: bottom right;
+  transform: translate(4%, 4%) rotate(-4deg) scale(0.96);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Photos */
+.photo-bw {
+  filter: grayscale(1) contrast(1.05) brightness(1.02);
+}
+.photo-fade-y {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 22%,
+    #000 78%,
+    transparent 100%
+  );
+}
+
+/* Parallax: put on an <img> inside a wrapper with overflow-hidden.
+   Browsers without scroll-driven animations show the photo static. */
+@keyframes parallaxShift {
   from {
-    opacity: 0;
-    transform: scale(1.08);
+    transform: translateY(-3%) scale(1.06);
   }
   to {
+    transform: translateY(3%) scale(1.06);
+  }
+}
+@supports (animation-timeline: view()) {
+  .parallax {
+    animation: parallaxShift linear both;
+    animation-timeline: view();
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
     opacity: 1;
-    transform: scale(1);
+    transform: none;
+    transition: none;
   }
-}
-
-@keyframes fadeUpIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
+  .parallax {
+    animation: none;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-scale {
-  animation: fadeScaleIn 1.2s ease-out forwards;
-}
-
-.animate-fade-up {
-  animation: fadeUpIn 1s ease-out forwards;
-  animation-delay: 0.5s;
-  opacity: 0; /* stay hidden until the animation starts */
 }
