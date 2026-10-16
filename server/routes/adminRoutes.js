@@ -16,7 +16,7 @@ const loginLimiter = rateLimit({
   skipSuccessfulRequests: true,
 }); // 15 min timout. IP based
 
-// I commented the user creation as I created a fixed admin for the project. It canbe uncommented and used if needed
+// I commented the user creation as I created a fixed admin for the project. It canbe uncommented and used if needed.
 //adminRoutes.post("/create", handleRegisterAdmin);
 adminRoutes.post("/login", loginLimiter, handleLoginAdmin);
 adminRoutes.get("/logged", adminAuth, loggedAdmin);
