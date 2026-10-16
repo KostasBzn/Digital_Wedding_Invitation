@@ -69,7 +69,7 @@ const MAP_STYLES = [
   { featureType: "poi.business", stylers: [{ visibility: "off" }] },
 ];
 
-const CORNER_SIZE = "w-[58vw] max-w-[420px] sm:max-w-[520px]";
+const CORNER_SIZE = "w-[42vw] max-w-[420px] sm:w-[58vw] sm:max-w-[520px]";
 
 const labelCls = "block text-xs tracking-[0.15em] text-ink-soft";
 const inputCls =
