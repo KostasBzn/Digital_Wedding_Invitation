@@ -71,7 +71,7 @@ const MAP_STYLES = [
 
 const CORNER_SIZE = "w-[42vw] max-w-[420px] sm:w-[58vw] sm:max-w-[520px]";
 
-const labelCls = "block text-xs tracking-[0.15em] text-ink-soft";
+const labelCls = "block text-xs tracking-[0.15em] text-ink-soft sm:text-sm";
 const inputCls =
   "w-full border-b border-ink/40 bg-transparent py-1.5 text-base outline-none transition-colors focus:border-ink";
 const eyebrow = "text-xs tracking-invite sm:text-sm";
@@ -144,7 +144,7 @@ function ContactCard({ name, phone, instagram, facebook, delay }) {
 
 function Invitation() {
   const [searchParams] = useSearchParams();
-  const isLimited = searchParams.get("v") === "1"; // church-only version
+  const isLimited = searchParams.get("v") === "1"; // church only version
 
   const { addGuest, loading, error } = useGuestContext();
   const [form, setForm] = useState({
@@ -502,7 +502,7 @@ function Invitation() {
         </div>
       </section>
 
-      <footer className="relative overflow-hidden px-6 pt-24 pb-[44vw] text-center sm:pb-20">
+      <footer className="relative overflow-hidden px-6 pt-24 pb-[44vw] text-center sm:min-h-[min(58vw,520px)] sm:pt-32 sm:pb-20">
         <Decor at="bl" className={CORNER_SIZE} />
         <p className="reveal relative z-10 text-xl italic text-ink-soft sm:text-2xl">
           Με αγάπη, Χρήστος &amp; Σαμψούλα
