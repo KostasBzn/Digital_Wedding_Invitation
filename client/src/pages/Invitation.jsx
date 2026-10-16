@@ -502,7 +502,7 @@ function Invitation() {
         </div>
       </section>
 
-      <footer className="relative overflow-hidden px-6 pt-24 pb-20 text-center">
+      <footer className="relative overflow-hidden px-6 pt-24 pb-[44vw] text-center sm:pb-20">
         <Decor at="bl" className={CORNER_SIZE} />
         <p className="reveal relative z-10 text-xl italic text-ink-soft sm:text-2xl">
           Με αγάπη, Χρήστος &amp; Σαμψούλα
