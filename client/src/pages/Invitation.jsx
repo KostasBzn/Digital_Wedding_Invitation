@@ -278,7 +278,7 @@ function Invitation() {
               style={revealDelay(150)}
               className="reveal mt-6 mb-10 text-center text-base italic leading-relaxed text-ink-soft sm:text-lg"
             >
-              Θα χαρούμε πολύ να μας ενημερώσετε για την παρουσία σας έως τις 20
+              Θα χαρούμε πολύ να μας ενημερώσετε για την παρουσία σας έως τις 15
               Νοεμβρίου 2026
             </p>
 
