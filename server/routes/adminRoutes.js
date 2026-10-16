@@ -2,7 +2,7 @@ import express from "express";
 import rateLimit from "express-rate-limit";
 import adminAuth from "../middlewares/adminAuth.js";
 import {
-  handleRegisterAdmin,
+  //handleRegisterAdmin,
   handleLoginAdmin,
   loggedAdmin,
 } from "../controllers/adminController.js";
@@ -16,7 +16,8 @@ const loginLimiter = rateLimit({
   skipSuccessfulRequests: true,
 }); // 15 min timout. IP based
 
-adminRoutes.post("/create", handleRegisterAdmin);
+// I commented the user creation as I created a fixed admin for the project. It canbe uncommented and used if needed
+//adminRoutes.post("/create", handleRegisterAdmin);
 adminRoutes.post("/login", loginLimiter, handleLoginAdmin);
 adminRoutes.get("/logged", adminAuth, loggedAdmin);
 
