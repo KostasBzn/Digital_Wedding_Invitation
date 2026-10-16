@@ -30,7 +30,7 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-/* Scroll reveal: add "reveal" to an element, useReveal adds "is-visible".
+/* Scroll reveal - add "reveal" to an element, useReveal adds "is-visible".
    Stagger with style={{ "--reveal-delay": "200ms" }} */
 .reveal {
   opacity: 0;
@@ -41,7 +41,7 @@ body {
   transition-delay: var(--reveal-delay, 0ms);
 }
 
-/* photo soft zoom-out while fading in */
+/* photo soft zoom out while fading in */
 .reveal-scale {
   transform: scale(1.06);
   transition-duration: 1.4s, 1.8s;
@@ -84,8 +84,7 @@ body {
   );
 }
 
-/* Parallax: put on an <img> inside a wrapper with overflow-hidden.
-   Browsers without scroll-driven animations show the photo static. */
+/* Parallax: put on an <img> inside a wrapper with overflow-hidden. */
 @keyframes parallaxShift {
   from {
     transform: translateY(-3%) scale(1.06);
