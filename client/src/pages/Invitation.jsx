@@ -163,7 +163,7 @@ function Invitation() {
   const pinIds = isLimited ? ["teleti"] : Object.keys(LOCATIONS);
   const activeLocation = LOCATIONS[activePin];
 
-  // center between the two pins (or on the church only)
+  // center between the two pins or on the church only
   const mapCenter = isLimited
     ? teleti.coords
     : {
