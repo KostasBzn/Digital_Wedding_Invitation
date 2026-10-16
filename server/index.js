@@ -19,7 +19,14 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-connectDB();
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.use("/admin", adminRoutes);
 app.use("/guests", guestRoutes);
